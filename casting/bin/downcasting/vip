@@ -1,0 +1,43 @@
+public class TestClassA {
+	WebDriver driver;
+	WebDriverWait wait;
+	OrangeHRMlog ft;
+	
+	@BeforeClass
+	public void launchbrowser()
+	{
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\LENOVO\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		 driver = new ChromeDriver();
+	     driver.get("https://opensource-demo.orangehrmlive.com/index.php/dashboard"); 
+	  //  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+	}
+	@BeforeMethod
+	public static void beforemethod()
+	{
+		System.out.println("before method A");
+	}
+	@Test 
+	public void testcase1() throws  IOException, InterruptedException
+	{
+		OrangeHRMlog ft = new OrangeHRMlog(driver);
+		Thread.sleep(3000);
+		ft.uidkey();
+		Thread.sleep(3000);
+		ft.pass();
+		Thread.sleep(3000);
+		ft.Bclick();
+	}	
+		
+	
+	@AfterMethod
+	public void aftermethod()
+	{
+		System.out.println("Aftermethod A");
+	}
+	@AfterClass
+	public void afterclass()
+	{
+		System.out.println("Afterclass A");
+	}
+
+}
